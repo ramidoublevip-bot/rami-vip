@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAMI VIP 01 - TURMA BLACK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a227;
+    --gold-light: #e8c76a;
+    --gold-dark: #8b6914;
+    --gold-shine: #f5d97a;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --dark3: #222222;
+    --dark4: #2a2a2a;
+    --skull: #1c1c1c;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #d4af5a;
+    --text-dim: #8a7040;
+    --border: rgba(201,162,39,0.3);
+    --border-bright: rgba(201,162,39,0.7);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(201,162,39,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,162,39,0.03) 0%, transparent 40%),
+      repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(201,162,39,0.015) 50px, rgba(201,162,39,0.015) 51px),
+      repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(201,162,39,0.015) 50px, rgba(201,162,39,0.015) 51px);
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 32px 20px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(201,162,39,0.08) 0%, transparent 100%);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-shine), var(--gold), transparent);
+  }
+
+  .badge-container {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .badge-img {
+    width: auto;
+    height: 110px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(201,162,39,0.4));
+    animation: badgePulse 3s ease-in-out infinite;
+  }
+
+  @keyframes badgePulse {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(201,162,39,0.4)); }
+    50% { filter: drop-shadow(0 0 35px rgba(201,162,39,0.7)) drop-shadow(0 0 60px rgba(201,162,39,0.2)); }
+  }
+
+  .header h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+    color: var(--gold-shine);
+    text-shadow: 0 0 30px rgba(201,162,39,0.6), 0 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 4px;
+    line-height: 1.1;
+  }
+
+  .header-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .ornament {
+    color: var(--gold);
+    font-size: 1.2rem;
+    opacity: 0.6;
+    margin: 0 8px;
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* INPUT PANEL */
+  .input-panel {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--skull) 100%);
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .input-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .panel-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .panel-title::before, .panel-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-bright));
+  }
+  .panel-title::after {
+    background: linear-gradient(270deg, transparent, var(--border-bright));
+  }
+
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 500px) {
+    .input-row { grid-template-columns: 1fr; }
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  input[type="date"], input[type="number"] {
+    background: var(--dark4);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    color: var(--gold-shine);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    letter-spacing: 1px;
+  }
+
+  input[type="date"]:focus, input[type="number"]:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,162,39,0.15), inset 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7) sepia(1) saturate(2) hue-rotate(10deg);
+    cursor: pointer;
+  }
+
+  /* MODE SELECTOR */
+  .mode-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .mode-btn {
+    background: var(--dark4);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mode-btn:hover { border-color: var(--gold-dark); }
+
+  .mode-btn.active-aggressive {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201,162,39,0.15) 0%, rgba(201,162,39,0.05) 100%);
+    box-shadow: 0 0 20px rgba(201,162,39,0.2), inset 0 1px 0 rgba(201,162,39,0.3);
+  }
+
+  .mode-btn.active-cautious {
+    border-color: #4ade80;
+    background: linear-gradient(135deg, rgba(74,222,128,0.1) 0%, rgba(74,222,128,0.03) 100%);
+    box-shadow: 0 0 20px rgba(74,222,128,0.15), inset 0 1px 0 rgba(74,222,128,0.2);
+  }
+
+  .mode-icon { font-size: 1.4rem; margin-bottom: 4px; }
+  .mode-pct {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--gold-shine);
+    line-height: 1;
+  }
+  .mode-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  /* STOP LEVELS */
+  .stops-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stop-card {
+    border-radius: 6px;
+    padding: 12px 14px;
+    border: 1px solid;
+  }
+
+  .stop-green {
+    background: linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.04) 100%);
+    border-color: rgba(34,197,94,0.4);
+  }
+
+  .stop-red {
+    background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.04) 100%);
+    border-color: rgba(239,68,68,0.4);
+  }
+
+  .stop-label {
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .stop-green .stop-label { color: var(--green); }
+  .stop-red .stop-label { color: var(--red); }
+
+  .stop-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .stop-green .stop-value { color: #4ade80; }
+  .stop-red .stop-value { color: #f87171; }
+
+  /* FINAL VALUE */
+  .final-section {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+  }
+
+  .btn-add {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    border: none;
+    border-radius: 6px;
+    padding: 11px 22px;
+    color: var(--black);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+  }
+
+  .btn-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 25px rgba(201,162,39,0.5);
+    background: linear-gradient(135deg, var(--gold-shine) 0%, var(--gold) 100%);
+  }
+
+  .btn-add:active { transform: translateY(0); }
+
+  /* RECORDS TABLE */
+  .records-section {
+    margin-top: 8px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 14px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .stat-item { color: var(--text-dim); }
+  .stat-item span { color: var(--gold); font-weight: 700; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  thead {
+    background: linear-gradient(135deg, var(--dark3) 0%, var(--skull) 100%);
+    position: sticky;
+    top: 0;
+  }
+
+  thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-bright);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(201,162,39,0.08);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(201,162,39,0.04); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 11px 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .td-day {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .td-date { color: var(--text-dim); font-size: 0.82rem; }
+  .td-mode-agg { color: var(--gold-shine); }
+  .td-mode-cau { color: #4ade80; }
+
+  .td-initial { color: var(--text); }
+  .td-stop-g { color: #4ade80; }
+  .td-stop-r { color: #f87171; }
+
+  .td-final-pos {
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .td-final-neg {
+    color: #f87171;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .td-final-neu { color: var(--text); }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .badge-profit {
+    background: rgba(34,197,94,0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+  .badge-loss {
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+  .badge-even {
+    background: rgba(201,162,39,0.1);
+    color: var(--gold);
+    border: 1px solid var(--border);
+  }
+
+  .btn-del {
+    background: none;
+    border: none;
+    color: rgba(239,68,68,0.4);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: all 0.15s;
+  }
+  .btn-del:hover {
+    color: #f87171;
+    background: rgba(239,68,68,0.1);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dim);
+  }
+
+  .empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.4; }
+  .empty-text { font-size: 0.8rem; letter-spacing: 2px; }
+
+  /* TOTAL FOOTER */
+  .total-footer {
+    margin-top: 14px;
+    background: linear-gradient(135deg, var(--dark2), var(--skull));
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .total-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .total-item { text-align: center; }
+  .total-lbl {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .total-val {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  /* ANIM */
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .row-new { animation: rowIn 0.3s ease; }
+
+  .skull-divider {
+    text-align: center;
+    color: var(--gold-dark);
+    font-size: 1rem;
+    letter-spacing: 8px;
+    opacity: 0.4;
+    margin: 4px 0 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge-container">
+    <img src="brasao.png" alt="RAMI VIP Brasão" class="badge-img">
+  </div>
+  <h1>RAMI VIP <span style="color:var(--gold-dark)">·</span> 01</h1>
+  <div class="skull-divider">◆ ☠ ◆</div>
+  <div class="header-sub">TURMA BLACK · DOUBLE VIP · GESTÃO OPERACIONAL</div>
+</div>
+
+<div class="container">
+
+  <div class="input-panel">
+    <div class="panel-title">Nova Operação</div>
+
+    <div class="input-row">
+      <div class="field-group">
+        <label>📅 Data</label>
+        <input type="date" id="inputDate">
+      </div>
+      <div class="field-group">
+        <label>💰 Valor Inicial (R$)</label>
+        <input type="number" id="inputInitial" placeholder="0,00" min="0" step="0.01">
+      </div>
+    </div>
+
+    <label style="display:block;margin-bottom:8px;">Modalidade de Operação</label>
+    <div class="mode-selector">
+      <div class="mode-btn" id="btnAggressive" onclick="setMode('aggressive')">
+        <div class="mode-icon">⚔️</div>
+        <div class="mode-pct">20%</div>
+        <div class="mode-label">Operação Agressiva</div>
+      </div>
+      <div class="mode-btn" id="btnCautious" onclick="setMode('cautious')">
+        <div class="mode-icon">🛡️</div>
+        <div class="mode-pct">10%</div>
+        <div class="mode-label">Operação Cautelosa</div>
+      </div>
+    </div>
+
+    <div class="stops-row">
+      <div class="stop-card stop-green">
+        <div class="stop-label">🟢 Stop Green +%</div>
+        <div class="stop-value" id="stopGreen">R$ —</div>
+      </div>
+      <div class="stop-card stop-red">
+        <div class="stop-label">🔴 Stop Loss -%</div>
+        <div class="stop-value" id="stopLoss">R$ —</div>
+      </div>
+    </div>
+
+    <div class="final-section">
+      <div class="field-group">
+        <label>🏁 Valor Final da Operação (R$)</label>
+        <input type="number" id="inputFinal" placeholder="0,00" min="0" step="0.01">
+      </div>
+      <button class="btn-add" onclick="addRecord()">＋ Registrar</button>
+    </div>
+  </div>
+
+  <div class="records-section">
+    <div class="section-header">
+      <div class="section-title">⚔ Histórico de Operações</div>
+      <div class="stats-row" id="statsRow">
+        <div class="stat-item">Dias: <span id="statDays">0</span></div>
+        <div class="stat-item">Win: <span id="statWin" style="color:#4ade80">0</span></div>
+        <div class="stat-item">Loss: <span id="statLoss" style="color:#f87171">0</span></div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="recordsTable">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Data</th>
+            <th>Modo</th>
+            <th>Inicial</th>
+            <th>Stop Green</th>
+            <th>Stop Loss</th>
+            <th>Final</th>
+            <th>Resultado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td colspan="9">
+              <div class="empty-state">
+                <div class="empty-icon">☠</div>
+                <div class="empty-text">Nenhuma operação registrada</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="total-footer" id="totalFooter" style="display:none">
+      <div class="total-item">
+        <div class="total-lbl">Capital Inicial</div>
+        <div class="total-val" id="totInitial" style="color:var(--text)">R$ 0</div>
+      </div>
+      <div class="total-item">
+        <div class="total-lbl">Capital Atual</div>
+        <div class="total-val" id="totCurrent">R$ 0</div>
+      </div>
+      <div class="total-item">
+        <div class="total-lbl">Resultado Total</div>
+        <div class="total-val" id="totResult">R$ 0</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let records = JSON.parse(localStorage.getItem('ramiRecords') || '[]');
+  let currentMode = 'aggressive';
+
+  // Set today's date
+  const today = new Date();
+  document.getElementById('inputDate').value = today.toISOString().split('T')[0];
+
+  function setMode(mode) {
+    currentMode = mode;
+    document.getElementById('btnAggressive').className = 'mode-btn' + (mode === 'aggressive' ? ' active-aggressive' : '');
+    document.getElementById('btnCautious').className = 'mode-btn' + (mode === 'cautious' ? ' active-cautious' : '');
+    updateStops();
+  }
+
+  function updateStops() {
+    const initial = parseFloat(document.getElementById('inputInitial').value) || 0;
+    const pct = currentMode === 'aggressive' ? 0.20 : 0.10;
+    if (initial > 0) {
+      document.getElementById('stopGreen').textContent = 'R$ ' + fmt(initial * (1 + pct));
+      document.getElementById('stopLoss').textContent = 'R$ ' + fmt(initial * (1 - pct));
+    } else {
+      document.getElementById('stopGreen').textContent = 'R$ —';
+      document.getElementById('stopLoss').textContent = 'R$ —';
+    }
+  }
+
+  document.getElementById('inputInitial').addEventListener('input', updateStops);
+
+  function fmt(v) {
+    return v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function addRecord() {
+    const dateVal = document.getElementById('inputDate').value;
+    const initial = parseFloat(document.getElementById('inputInitial').value);
+    const final = parseFloat(document.getElementById('inputFinal').value);
+
+    if (!dateVal || isNaN(initial) || initial <= 0) {
+      alert('Preencha a data e o valor inicial!');
+      return;
+    }
+    if (isNaN(final) || final < 0) {
+      alert('Preencha o valor final da operação!');
+      return;
+    }
+
+    const pct = currentMode === 'aggressive' ? 0.20 : 0.10;
+    const record = {
+      id: Date.now(),
+      day: records.length + 1,
+      date: dateVal,
+      mode: currentMode,
+      initial: initial,
+      stopGreen: initial * (1 + pct),
+      stopLoss: initial * (1 - pct),
+      final: final
+    };
+
+    records.push(record);
+    save();
+    render();
+
+    // Auto-populate next day's initial with this final value
+    document.getElementById('inputInitial').value = final.toFixed(2);
+    document.getElementById('inputFinal').value = '';
+    // Next date
+    const nextDate = new Date(dateVal + 'T12:00:00');
+    nextDate.setDate(nextDate.getDate() + 1);
+    document.getElementById('inputDate').value = nextDate.toISOString().split('T')[0];
+    updateStops();
+  }
+
+  function deleteRecord(id) {
+    if (!confirm('Remover este registro?')) return;
+    records = records.filter(r => r.id !== id);
+    records.forEach((r, i) => r.day = i + 1);
+    save();
+    render();
+  }
+
+  function save() {
+    localStorage.setItem('ramiRecords', JSON.stringify(records));
+  }
+
+  function render() {
+    const tbody = document.getElementById('tableBody');
+
+    if (records.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">☠</div><div class="empty-text">Nenhuma operação registrada</div></div></td></tr>`;
+      document.getElementById('totalFooter').style.display = 'none';
+      document.getElementById('statDays').textContent = '0';
+      document.getElementById('statWin').textContent = '0';
+      document.getElementById('statLoss').textContent = '0';
+      return;
+    }
+
+    let wins = 0, losses = 0;
+
+    tbody.innerHTML = records.map((r, idx) => {
+      const profit = r.final - r.initial;
+      const isPos = profit > 0;
+      const isNeg = profit < 0;
+      if (isPos) wins++;
+      if (isNeg) losses++;
+
+      const finalClass = isPos ? 'td-final-pos' : isNeg ? 'td-final-neg' : 'td-final-neu';
+      const modeClass = r.mode === 'aggressive' ? 'td-mode-agg' : 'td-mode-cau';
+      const modeLabel = r.mode === 'aggressive' ? '⚔️ 20%' : '🛡️ 10%';
+
+      const badgeCls = isPos ? 'badge-profit' : isNeg ? 'badge-loss' : 'badge-even';
+      const badgeIcon = isPos ? '▲' : isNeg ? '▼' : '■';
+      const badgeTxt = isPos ? '+' + fmt(profit) : fmt(profit);
+
+      const dateFormatted = new Date(r.date + 'T12:00:00').toLocaleDateString('pt-BR');
+
+      return `<tr class="${idx === records.length - 1 ? 'row-new' : ''}">
+        <td class="td-day">Dia ${r.day}</td>
+        <td class="td-date">${dateFormatted}</td>
+        <td class="${modeClass}">${modeLabel}</td>
+        <td class="td-initial">R$ ${fmt(r.initial)}</td>
+        <td class="td-stop-g">R$ ${fmt(r.stopGreen)}</td>
+        <td class="td-stop-r">R$ ${fmt(r.stopLoss)}</td>
+        <td class="${finalClass}">R$ ${fmt(r.final)}</td>
+        <td><span class="result-badge ${badgeCls}">${badgeIcon} ${badgeTxt}</span></td>
+        <td><button class="btn-del" onclick="deleteRecord(${r.id})" title="Remover">✕</button></td>
+      </tr>`;
+    }).join('');
+
+    // Stats
+    document.getElementById('statDays').textContent = records.length;
+    document.getElementById('statWin').textContent = wins;
+    document.getElementById('statLoss').textContent = losses;
+
+    // Totals
+    const firstInitial = records[0].initial;
+    const lastFinal = records[records.length - 1].final;
+    const totalResult = lastFinal - firstInitial;
+
+    document.getElementById('totalFooter').style.display = 'grid';
+    document.getElementById('totInitial').textContent = 'R$ ' + fmt(firstInitial);
+    document.getElementById('totCurrent').textContent = 'R$ ' + fmt(lastFinal);
+    document.getElementById('totCurrent').style.color = lastFinal >= firstInitial ? '#4ade80' : '#f87171';
+    document.getElementById('totResult').textContent = (totalResult >= 0 ? '+' : '') + 'R$ ' + fmt(totalResult);
+    document.getElementById('totResult').style.color = totalResult >= 0 ? '#4ade80' : '#f87171';
+  }
+
+  // Init
+  setMode('aggressive');
+  render();
+</script>
+</body>
+</html>
